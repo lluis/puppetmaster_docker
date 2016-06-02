@@ -1,0 +1,2 @@
+run puppetmaster container with:
+docker run -d --name puppetmaster -h puppet -p 8140:8140 -v `pwd`/conf:/etc/puppet -v `pwd`/var:/var/lib/puppet lluis/puppetmaster
