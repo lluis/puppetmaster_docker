@@ -1,2 +1,4 @@
-conf
+conf/hieradata
+conf/site-modules
+conf/modules
 var

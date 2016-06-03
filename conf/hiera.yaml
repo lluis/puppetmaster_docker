@@ -1,0 +1,22 @@
+---
+:backends:
+  - http
+  - yaml
+:yaml:
+  :datadir: "/etc/puppet/hieradata"
+:hierarchy:
+  - "nodes/%{::trusted.certname}"
+  - "common"
+:logger: console
+:merge_behavior: native
+:deep_merge_options: {}
+:http:
+  :host: 192.168.10.3
+  :port: 3000
+  :output: yaml
+  :cache_timeout: 10
+  :failure: graceful
+  :headers:
+    :X-Token: my-token
+  :paths:
+    - /node/hiera_data?hostname=%{::trusted.certname}
