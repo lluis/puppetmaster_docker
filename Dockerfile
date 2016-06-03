@@ -15,6 +15,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 # replace 1000 with your uid
 RUN usermod -u 1000 puppet
 RUN groupmod -g 1000 puppet
+
 RUN gem install hiera-http
 
 ADD puppet.conf /etc/puppet/puppet.conf
