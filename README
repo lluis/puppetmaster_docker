@@ -1,10 +1,10 @@
 * build puppetmaster container with:
 
-    docker build -t lluis/puppetmaster master/
+    docker build -t lluis/puppetmaster puppetmaster/
 
 * run puppetmaster container with:
 
-    docker run -d --name puppetmaster -h puppet -p 8140:8140 -v `pwd`/master/conf:/etc/puppet -v `pwd`/master/var:/var/lib/puppet lluis/puppetmaster
+    docker run -d --name puppetmaster -h puppet -p 8140:8140 -v `pwd`/puppetmaster/conf:/etc/puppet -v `pwd`/puppetmaster/var:/var/lib/puppet lluis/puppetmaster
 
 * build puppetdb container with:
 
