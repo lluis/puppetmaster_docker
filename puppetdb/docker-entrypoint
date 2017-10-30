@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo "Starting puppetdb"
+/usr/bin/java -Djava.security.egd=/dev/urandom \
+  -XX:OnOutOfMemoryError="kill -9 %%p" \
+  -cp /usr/share/puppetdb/puppetdb.jar \
+  clojure.main \
+  -m puppetlabs.puppetdb.main \
+  --config /etc/puppetdb/conf.d \
+  --bootstrap-config \
+  /etc/puppetdb/bootstrap.cfg \
+  --restart-file /run/puppetdb/restart
