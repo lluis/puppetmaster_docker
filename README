@@ -12,4 +12,4 @@
 
 * run puppetdb container with:
 
-    docker run -d --name puppetdb -h puppetdb -p 8080:8080 -p 8081:8081 lluis/puppetdb
+    docker run -d --name puppetdb -h puppetdb -p 8080:8080 -p 8081:8081 -v `pwd`/puppetdb/conf:/etc/puppetdb lluis/puppetdb

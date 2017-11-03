@@ -1,4 +1,5 @@
-conf/hieradata
-conf/site-modules
-conf/modules
-var
+puppetmaster/conf/hieradata
+puppetmaster/conf/site-modules
+puppetmaster/conf/modules
+puppetmaster/conf/ssl
+puppetmaster/var
