@@ -1,5 +1,7 @@
 #!/bin/sh
 
+chown -R puppetdb:puppetdb /etc/puppetdb
+
 echo "Starting puppetdb"
 /usr/bin/java -Djava.security.egd=/dev/urandom \
   -XX:OnOutOfMemoryError="kill -9 %%p" \
@@ -10,3 +12,4 @@ echo "Starting puppetdb"
   --bootstrap-config \
   /etc/puppetdb/bootstrap.cfg \
   --restart-file /run/puppetdb/restart
+

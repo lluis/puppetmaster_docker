@@ -27,8 +27,7 @@ RUN groupmod -g 1000 puppetdb
 #
 #RUN mv /etc/puppet /etc/puppet.skel
 #RUN mv /var/lib/puppet /var/lib/puppet.skel
-#VOLUME [ "/etc/puppet" ]
-#VOLUME [ "/var/lib/puppet" ]
+VOLUME [ "/etc/puppetdb" ]
 
 EXPOSE 8080
 EXPOSE 8081
