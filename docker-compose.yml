@@ -1,6 +1,6 @@
 version: '2'
 services:
-  puppetmaster:
+  puppet:
     build: puppetmaster
     ports:
       - "8140:8140"

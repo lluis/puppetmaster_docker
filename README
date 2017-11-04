@@ -1,15 +1,16 @@
-* build puppetmaster container with:
+* build containers with:
 
-    docker build -t lluis/puppetmaster puppetmaster/
+    docker-compose build
 
-* run puppetmaster container with:
+* start containers with:
 
-    docker run -d --name puppetmaster -h puppet -p 8140:8140 -v `pwd`/puppetmaster/conf:/etc/puppet -v `pwd`/puppetmaster/var:/var/lib/puppet lluis/puppetmaster
+    docker-compose up -d
 
-* build puppetdb container with:
+* run a puppet agent:
 
-    docker build -t lluis/puppetdb puppetdb/
+    docker run --net puppetmasterdocker_default puppet/puppet-agent-debian
 
-* run puppetdb container with:
+* stop them with:
 
-    docker run -d --name puppetdb -h puppetdb -p 8080:8080 -p 8081:8081 -v `pwd`/puppetdb/conf:/etc/puppetdb lluis/puppetdb
+    docker-compose down
+
