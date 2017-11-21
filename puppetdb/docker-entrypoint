@@ -2,6 +2,31 @@
 
 chown -R puppetdb:puppetdb /etc/puppetdb
 
+#    + puppetdb ssl-setup is not implemented, as it cannot run reliably on a
+#      Debian system. To set up TLS see the following section.
+# 
+# 2. Setting up TLS
+# -----------------
+# 
+# Out-of-the-box, PuppetDB will listen on localhost, port 8080 for plain HTTP
+# requests. The puppet terminus requires HTTPS to work, with the Puppet master
+# and PuppetDB performing mutual authentication via TLS. For this to work you
+# will need to install a certificate issued by your Puppet CA; the easiest way to
+# do so is to use the PuppetDB host's Puppet certificate, which on Debian systems
+# can be found under /var/lib/puppet/ssl:
+# 
+#  - Copy the certificate and the corresponding private key over to /etc/puppetdb
+#  - Adjust the settings in /etc/puppetdb/conf.d/jetty.ini
+#  - Restart puppetdb
+# 
+# Future versions of the package might attempt to do this semi-automatically
+# during insstallation.
+
+if [ ! -d "/var/lib/puppet/ssl" ]; then
+  # generate a certificate signed by puppetmaster
+  /usr/bin/puppet agent --test --waitforcert 1
+fi
+
 echo "Starting puppetdb"
 /usr/bin/java -Djava.security.egd=/dev/urandom \
   -XX:OnOutOfMemoryError="kill -9 %%p" \

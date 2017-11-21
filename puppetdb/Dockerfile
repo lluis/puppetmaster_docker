@@ -13,7 +13,7 @@ ADD apt-puppet.pref /etc/apt/preferences.d/10_puppet.pref
 RUN export DEBIAN_FRONTEND=noninteractive && \
       apt -qq update && \
       apt --no-install-recommends install -t sid -y \
-      wget ca-certificates puppetdb && \
+      wget ca-certificates puppetdb puppet && \
       apt clean && rm -rf /var/lib/apt/lists/*
 
 # this prevents owner/group change on volumes

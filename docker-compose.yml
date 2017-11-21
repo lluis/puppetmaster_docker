@@ -1,6 +1,7 @@
 version: '2'
 services:
   puppet:
+    hostname: puppet
     build: puppetmaster
     ports:
       - "8140:8140"
@@ -8,12 +9,16 @@ services:
       - ./puppetmaster/conf:/etc/puppet
       - ./puppetmaster/var:/var/lib/puppet
   puppetdb:
+    hostname: puppetdb
     build: puppetdb
     volumes:
       - ./puppetdb/conf:/etc/puppetdb
   postgres:
+    hostname: postgres
     image: postgres
     restart: always
     environment:
       POSTGRES_USER: puppetdb
       POSTGRES_PASSWORD: dbpasswd
+    volumes:
+      - ./postgres/trgm.sql:/docker-entrypoint-initdb.d/trgm.sql
