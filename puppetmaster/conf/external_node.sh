@@ -11,6 +11,6 @@ if [ -d /usr/local/cache/ ]; then
 
 else
   
-  /usr/bin/wget -q $URL
+  /usr/bin/wget -O - -q $URL
 
 fi
