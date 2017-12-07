@@ -24,7 +24,9 @@ chown -R puppetdb:puppetdb /etc/puppetdb
 
 if [ ! -d "/var/lib/puppet/ssl" ]; then
   # generate a certificate signed by puppetmaster
+  ls -la /var/lib/puppet/ssl/*
   /usr/bin/puppet agent --test --waitforcert 1
+  ls -la /var/lib/puppet/ssl/*
 fi
 
 echo "Starting puppetdb"

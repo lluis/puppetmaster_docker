@@ -1,21 +1,35 @@
 version: '2'
 services:
   puppet:
-    hostname: puppet
+    hostname: puppetmaster
+    domainname: foo.local
+    dns_search: foo.local
     build: puppetmaster
     ports:
       - "8140:8140"
     volumes:
       - ./puppetmaster/conf:/etc/puppet
-      - ./puppetmaster/var:/var/lib/puppet
+        # for production, in order to keep CA certificates?
+        # - ./puppetmaster/var:/var/lib/puppet
       - ~/git/initr/:/srv/initr
   puppetdb:
     hostname: puppetdb
+    dns_search: foo.local
+    domainname: foo.local
+    networks:
+      default:
+        aliases:
+          - puppetdb.foo.local
     build: puppetdb
+    ports:
+      - "8080:8080"
+      - "8081:8081"
     volumes:
       - ./puppetdb/conf:/etc/puppetdb
   postgres:
     hostname: postgres
+    domainname: foo.local
+    dns_search: foo.local
     image: postgres
     restart: always
     environment:

@@ -23,12 +23,13 @@ RUN groupmod -g 1000 puppet
 
 RUN gem install hiera-http
 
-ADD puppet.conf /etc/puppet/puppet.conf
+#ADD puppet.conf /etc/puppet/puppet.conf
 
-RUN mv /etc/puppet /etc/puppet.skel
-RUN mv /var/lib/puppet /var/lib/puppet.skel
-VOLUME [ "/etc/puppet" ]
-VOLUME [ "/var/lib/puppet" ]
+#RUN mv /etc/puppet /etc/puppet.skel
+#VOLUME [ "/etc/puppet" ]
+
+#RUN mv /var/lib/puppet /var/lib/puppet.skel
+#VOLUME [ "/var/lib/puppet" ]
 
 EXPOSE 8140
 

@@ -8,9 +8,22 @@
 
 * run a puppet agent:
 
-    docker run --net puppetmasterdocker_default puppet/puppet-agent-debian
+  export HN=my.host.name
+  # on master. clean client certificate from previous run
+  docker exec -ti puppetmasterdocker_puppet_1 /usr/bin/puppet cert clean $HN
+  docker run --net puppetmasterdocker_default --dns-search=. --hostname=$HN puppet/puppet-agent-debian
 
 * stop them with:
 
     docker-compose down
 
+* puppetdb dashboard http://172.18.0.2:8080/pdb/dashboard/index.html
+
+* puppetdb query with curl
+
+   curl -X GET http://172.18.0.2:8080/pdb/query/v4/resources --data-urlencode\
+               query@query.json | json_pp
+
+   # cat "["=", "certname", "foo.example.com"]" > query.json
+   curl -X GET http://172.18.0.2:8080/pdb/query/v4/facts --data-urlencode\
+               query@query.json | json_pp
