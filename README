@@ -11,7 +11,7 @@
   export HN=my.host.name
   # on master. clean client certificate from previous run
   docker exec -ti puppetmasterdocker_puppet_1 /usr/bin/puppet cert clean $HN
-  docker run --net puppetmasterdocker_default --dns-search=. --hostname=$HN puppet/puppet-agent-debian
+  docker run --rm --net puppetmasterdocker_default --dns-search=. --hostname=$HN puppet/puppet-agent-debian
 
 * stop them with:
 
