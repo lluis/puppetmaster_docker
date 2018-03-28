@@ -1,2 +1,2 @@
 # deb http://deb.debian.org/debian sid main
-deb http://snapshot.debian.org/archive/debian/20180301T094050Z sid main
+deb http://snapshot.debian.org/archive/debian/20171205T100759Z sid main
