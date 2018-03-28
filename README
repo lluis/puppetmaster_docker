@@ -6,7 +6,24 @@
 
     docker-compose up -d
 
-* run a puppet agent:
+* run a puppet agent, method 1:
+
+  docker-compose run client7 bash # wheez puppetlabs puppet-agent 5
+
+    vi /etc/puppetlabs/puppet/puppet.conf #     certname = ...
+    /opt/puppetlabs/bin/puppet agent --test
+
+  docker-compose run client8 bash # jessie puppetlabs puppet-agent 5
+
+    vi /etc/puppetlabs/puppet/puppet.conf #     certname = ...
+    /opt/puppetlabs/bin/puppet agent --test
+
+  docker-compose run client9 bash # stretch debian puppet 4
+
+    vi /etc/puppet/puppet.conf #     certname = ...
+    puppet agent --test
+
+* run a puppet agent, method 2:
 
   export HN=my.host.name
   # on master. clean client certificate from previous run
