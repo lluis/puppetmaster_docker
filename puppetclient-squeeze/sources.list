@@ -1,0 +1,4 @@
+deb http://archive.debian.org/debian-archive/debian squeeze main contrib non-free
+deb http://archive.debian.org/debian-archive/debian squeeze-lts main contrib non-free
+
+deb http://http.debian.net/debian wheezy main contrib non-free

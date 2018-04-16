@@ -37,6 +37,12 @@ services:
       POSTGRES_PASSWORD: dbpasswd
     volumes:
       - ./postgres/trgm.sql:/docker-entrypoint-initdb.d/trgm.sql
+  client6:
+    hostname: puppetclient-squeeze
+    domainname: foo.local
+    dns_search: foo.local
+    build: puppetclient-squeeze
+    command: "true"
   client7:
     hostname: puppetclient-wheezy
     domainname: foo.local
