@@ -1,3 +1,0 @@
-Package: puppet*
-Pin: release a=sid
-Pin-Priority: 990
